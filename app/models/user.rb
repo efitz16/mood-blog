@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy #toggle this?
-  validates :username, presence: true, length: {} #inbtwn
+  validates :username, presence: true, within: 4..20, :too_long => "Username must be between 4 and 20 characters", :too_short => "Username must be between 4 and 20 characters"
   validates :first_name, :last_name, presence: true, length: {maximum: 100}
-  validates :password, presence: true, length: {} #inbtwn
+  validates :password, presence: true, within: 6..20
   validates :email presence: true,
   				   length: { maximum: 255},
   				   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+(\.[a-z\d\-]+)+\z/i },
