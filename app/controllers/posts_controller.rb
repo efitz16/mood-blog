@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :redirect, only: [:edit, :destroy]
   def index
   end
 
@@ -12,6 +13,8 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(post_params)
+
+
   end
 
   def edit
@@ -23,5 +26,8 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def redirect
   end
 end
