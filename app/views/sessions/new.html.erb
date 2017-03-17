@@ -1,11 +1,18 @@
 <h1>Login</h1>
 
 <div class="login-container">
-  <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email %>
-    <%= f.label :password, "Password" %>
-    <%= f.password_field :password %>
-    <%= f.submit "Login", :disable_with => 'Submiting...' %>
-  <%= end %>
+  <div class="login-errors">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+  <div class="login-form">
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email %>
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password %>
+      <%= f.submit "Login", :disable_with => 'Submiting...' %>
+    <% end %>
+  </div>
 </div>
