@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find_by(id: params[:id])
+  end
+
   def new
   	@user = User.new
     redirect_to root_url if logged_in?
