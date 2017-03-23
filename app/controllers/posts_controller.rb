@@ -18,10 +18,11 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      flash[:success] = "Post succesfully created"
-      redirect_to @user.posts
+      flash[:notice] = "Post succesfully created"
+      redirect_to user_posts_path(user_id: current_user)
     else
-      flash[:error] = "There was an issue creating your blog post"
+      flash[:notice] = "There was an issue creating your blog post"
+      @errors = @post.errors
       render 'new'
     end
   end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   	resources :posts, only: [:index]
   end
 
-  resources :posts
+  resources :posts, except: [:index]
 
   get 'login', to: 'sessions#new'
 
