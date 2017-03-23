@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :redirect, only: [:edit, :destroy]
-  before_action :logged_in?, except: [:index, :show]
+  before_action :login_redirect, except: [:index, :show]
+  #before_action :redirect, only: [:edit, :destroy]
 
   def index
     @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
@@ -28,6 +28,14 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find_by(id: params[:id])
+
+    redirect
+
+    
+
+
+
   end
 
   def delete
