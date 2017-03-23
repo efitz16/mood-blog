@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :logged_in?, except: [:index, :show]
 
   def index
-    @posts = Post.find_by(user_id: params[:user_id])
+    @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
   end
 
   def show

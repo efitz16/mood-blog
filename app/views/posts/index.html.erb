@@ -3,3 +3,14 @@
 <% else %>
   <%= link_to("Login", login_path) %>
 <% end %>
+
+<% if @posts %>
+  <% @posts.each do |post| %>
+  <div>
+    <h2><%= post.title %></h2>
+    <p><%= post.body %></p>
+    <p><%= post.created_at.strftime("%m/%d/%Y") %></p>
+    <p><%= # link_to %></p>
+   </div>
+  <% end %>
+<% end %>
