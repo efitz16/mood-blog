@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   	if @user && @user.authenticate(session_params[:password])
       log_in(@user)
       redirect_to root_url
+      flash[:notice] = "Logged in successfully"
   	else
   	  flash[:notice] = "Error logging in"
   	  render 'new'

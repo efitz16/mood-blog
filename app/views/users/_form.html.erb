@@ -1,11 +1,13 @@
 <div id="user-errors">
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
-  <% end %>
+  <% # if @user.errors.any? %>
+    <!-- <ul> -->
+      <% # @user.errors.full_messages.each do |message| %>
+      <!-- <li><%= #message %></li> -->
+    <!-- </ul> -->
+  <% # end %>
+  <% # end %>
+
+  <%= render 'shared/errors' %>
 </div>
 
 <div id="user-form-container">

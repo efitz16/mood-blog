@@ -1,7 +1,13 @@
+<% if flash[:notice]  %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<%= render 'shared/errors' %>
+
 <%= form_for @post do |f| %>
   <%= f.label :title, "Title" %>
-  <%= f.text_field :title %>
-  <%= f.label :Body, "Body" %>
-  <%= f.text_area :body %>
+  <%= f.text_field :title, value: !!@post.title ? @post.title : ""  %>
+  <%= f.label :body, "Body" %>
+  <%= f.text_area :body, value: !!@post.body ? @post.body : "" %>
   <%= f.submit yield(:submit_text), :disable_with => 'Submiting...' %>
-<%= end %>
+<% end %>

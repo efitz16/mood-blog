@@ -1,12 +1,4 @@
-<%if logged_in? %>
-  <%= link_to("logout", logout_path, method: "delete") %>
-<% else %>
-  <%= link_to("Login", login_path) %>
-<% end %>
-
-<% if @posts %>
-  <% @posts.each do |post| %>
-    <div>
+<div>
     <h2><%= link_to post.title, post_path(post) %></h2>
     <p><%= post.body %></p>
     <p><%= post.created_at.strftime("%m/%d/%Y") %></p>
@@ -16,5 +8,3 @@
     <% end %>
     <% # comments here %>
  </div>
-  <% end %>
-<% end %>
