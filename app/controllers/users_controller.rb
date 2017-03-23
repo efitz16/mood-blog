@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def edit
   end
 
-  def delete
+  def destroy
   end
 
   private
