@@ -8,14 +8,14 @@
 
 require 'faker'
 
-@user1 = User.new(first_name: "Liz", last_name: "Fitz", username: Faker::TwinPeaks.character, email: "efitz16@me.com", password: "Password1")
-@user2 = User.new(first_name: "Mary", last_name: "Strac", username: Faker::TwinPeaks.character, email: "mstracc@gmail.com", password: "Password2")
-@user3 = User.new(first_name: "Harry", last_name: "Loyd", username: Faker::TwinPeaks.character, email: "hloyd@gmail.com", password: "Password3")
+@user1 = User.create(first_name: "Liz", last_name: "Fitz", username: Faker::TwinPeaks.character, email: "efitz16@me.com", password: "Password1")
+@user2 = User.create(first_name: "Mary", last_name: "Strac", username: Faker::TwinPeaks.character, email: "mstracc@gmail.com", password: "Password2")
+@user3 = User.create(first_name: "Harry", last_name: "Loyd", username: Faker::TwinPeaks.character, email: "hloyd@gmail.com", password: "Password3")
 
 50.times do
-  Post.create(title: Faker::TwinPeaks.quote, body: Faker::Hipster.paragraphs(rand(0..10)), user: User.all.sample)
+  Post.create(title: Faker::TwinPeaks.quote, body: Faker::Hipster.paragraphs(rand(1..10)), user: User.all.sample)
 end
 
 100.times do
-  Comment.create(text: Faker::Hipster.paragraphs(rand(0..4)), user: User.all.sample, post: Post.all.sample)
+  Comment.create(body: Faker::Hipster.paragraphs(rand(1..4)), user: User.all.sample, post: Post.all.sample)
 end

@@ -2,7 +2,7 @@
     <h2><%= link_to post.title, post_path(post) %></h2>
     <p><%= post.body %></p>
     <p><%= post.created_at.strftime("%m/%d/%Y") %></p>
-    <% if creator?(current_user, post) %>
+    <% if creator?(post) %>
       <%= link_to "Edit", edit_post_path(post) %>
       <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete this post" } %>
     <% end %>

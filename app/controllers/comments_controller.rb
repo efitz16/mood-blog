@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def index
     @post = Post.find_by(id: params[:post_id])
     @comments = @post.comments
+    # binding.pry
   end
 
   def show
@@ -22,8 +23,9 @@ class CommentsController < ApplicationController
 
     @post = Post.find_by(id: params[:post_id])
 
+    @post.comments << @comment
+
     if @comment.save
-      @post.comments << @comment
       redirect_to @comment.post
     else
       @errors = @comment.errors
@@ -32,21 +34,48 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find_by(id: params[:id])
+
+    redirect
+
+    if @comment
+      @post = @comment.post
+      @body = @comment.body
+      render 'edit'
+    else
+      redirect_to root_url
+    end
   end
 
   def update
+    @comment = Comment.find_by(id: params[:id])
+
+    redirect
+
+    if @comment.update
+       redirect_to current_user.posts
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @comment = Comment.find_by(id: params[:id])
+
+    redirect
+
+    @comment.destroy
+
+    redirect_to root_url
   end
 
   private
   def comment_params
-    params(:commnt).permit(:body)
+    params.require(:comment).permit(:body)
   end
 
   def redirect
-    unless current_user == @comment.post.user || current_user == @comment.user
+    unless current_user == @comment.user || current_user == @comment.post.user
       redirect_to root_url
     end
   end

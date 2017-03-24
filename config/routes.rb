@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   delete 'logout', to: 'sessions#destroy'
 
-  resources :comments, except: [:index]
+  resources :comments, except: [:index, :new, :create]
 
   root 'posts#index'
 end

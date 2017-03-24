@@ -1,5 +1,5 @@
 module PostsHelper
-  def creator?(user, post)
-  	logged_in? && user == post.user
+  def creator?(post)
+  	logged_in? && current_user == post.user
   end
 end
