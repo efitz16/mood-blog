@@ -65,7 +65,7 @@ class CommentsController < ApplicationController
 
     @comment.destroy
 
-    redirect_to root_url
+    redirect_to post_comments_path(@comment.post)
   end
 
   private
