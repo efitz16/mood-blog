@@ -31,5 +31,4 @@ $(document).ready(function() {
       $('#create-post-link').show();
     });
   });
-
 });
