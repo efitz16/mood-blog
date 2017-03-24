@@ -11,24 +11,36 @@ class PostsController < ApplicationController
   end
 
   def new
-  	@post = Post.new
+      @post = Post.new
 
-    @title = @post.title
-    @body = @post.body
+      @title = @post.title
+      @body = @post.body
+
+  	  if request.xhr?
+        render '_form', layout: false
+      else
+        render 'new'
+    end
   end
 
   def create
   	@post = Post.new(post_params)
     @post.user = current_user
 
-    if @post.save
-      flash[:notice] = "Post succesfully created"
-      redirect_to user_posts_path(user_id: current_user)
-    else
-      flash[:notice] = "There was an issue creating your blog post"
-      @errors = @post.errors
-      render 'new'
-    end
+      if @post.save
+        if request.xhr?
+          render '_post', layout: false
+        else
+          redirect_to user_posts_path(user_id: current_user)
+        end
+      else
+        @errors = @post.errors
+        if request.xhr?
+          render '_new', layout: false
+        else
+          render 'new'
+        end
+      end
   end
 
   def edit

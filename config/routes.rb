@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  root 'users#show'
+
   resources :users, except: [:index] do
   	resources :posts, only: [:index]
   end
@@ -15,6 +18,4 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :comments, except: [:index, :new, :create]
-
-  root 'posts#index'
 end

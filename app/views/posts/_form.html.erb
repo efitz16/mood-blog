@@ -1,13 +1,17 @@
-<% if flash[:notice]  %>
-  <p><%= flash[:notice] %></p>
-<% end %>
-
-<%= render 'shared/errors' %>
-
-<%= form_for @post do |f| %>
-  <%= f.label :title, "Title" %>
-  <%= f.text_field :title, value: !!@title ? @title : ""  %>
-  <%= f.label :body, "Body" %>
-  <%= f.text_area :body, value: !!@body ? @body : "" %>
-  <%= f.submit yield(:submit_text), :disable_with => 'Submiting...' %>
-<% end %>
+<div id="post-form-outside-container">
+  <%= render 'shared/errors' %>
+  
+  <div id="post-form-container">
+    <%= form_for @post, html: { id: "form-post" } do |f| %>
+    <div>
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title, value: !!@title ? @title : ""  %>
+    </div>
+    <div>
+      <%= f.label :body, "Body" %>
+      <%= f.text_area :body, value: !!@body ? @body : "" %>
+    </div>
+      <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+    <% end %>
+  </div>
+</div>

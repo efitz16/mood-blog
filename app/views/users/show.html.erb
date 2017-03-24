@@ -1,0 +1,7 @@
+<% if !!@user %>
+  <h3><%= @user.username %></h3>
+
+  <%= link_to "See my posts", user_posts_path(@user) %>
+<% else %>
+  Please log in!
+<% end %>
