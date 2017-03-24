@@ -34,4 +34,3 @@ Comment.create(body: "comment by user 1", user: @user1, post: testcase2)
 Comment.create(body: "comment by user 2", user: @user2, post: testcase1)
 
 Comment.create(body: "comment by user 3", user: @user3, post: testcase2)
-
