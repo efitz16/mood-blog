@@ -6,6 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%if logged_in? %>
+      <span><%= link_to("logout", logout_path, method: "delete") %></span>
+    <% else %>
+      <span><%= link_to("Login", login_path) %></span>
+    <% end %>
   </head>
 
   <body>

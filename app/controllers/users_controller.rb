@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
+  before_action :login_redirect, only: [:edit, :destroy]
+
+  def index
+  end
+
   def show
-    @user = User.find_by(id: params[:id])
+    if !!params[:id]
+      @user = User.find_by(id: params[:id])
+    else
+      @user = current_user
+    end
   end
 
   def new
