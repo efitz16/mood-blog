@@ -1,0 +1,19 @@
+<div id="comment-form-with-errors">
+  <div id="comment-errors">
+    <% if @errors %>
+      <ul>
+      <% @errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      	<% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div id="comment-form">
+    <%= form_for([@post, @comment]) do |f| %>
+      <%= f.label :body, "Body" %>
+      <%= f.text_area :body, value: !!@body ? @body : "" %>
+      <%= f.submit yield(:submit_text), :disable_with => 'Submiting...' %>
+    <% end %>
+  </div>
+</div>

@@ -6,8 +6,8 @@
 
 <%= form_for @post do |f| %>
   <%= f.label :title, "Title" %>
-  <%= f.text_field :title, value: !!@post.title ? @post.title : ""  %>
+  <%= f.text_field :title, value: !!@title ? @title : ""  %>
   <%= f.label :body, "Body" %>
-  <%= f.text_area :body, value: !!@post.body ? @post.body : "" %>
+  <%= f.text_area :body, value: !!@body ? @body : "" %>
   <%= f.submit yield(:submit_text), :disable_with => 'Submiting...' %>
 <% end %>

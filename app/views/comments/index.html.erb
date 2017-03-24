@@ -1,0 +1,17 @@
+<% if !@comments.empty? %>
+  <% @comments.each do |comment| %>
+  <div>
+    <p><%= comment.body %></p>
+    <% if edit?(comment) %>
+      <span><%= link_to "Edit", edit_comment_path(comment) %></span>
+    <% end %>
+    <% if delete?(comment, @post) %>
+      <span><%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure you wish to delete this comment?" }%></span>
+    <% end %>
+  </div>
+  <% end %>
+<% end %>
+
+<% if logged_in? %>
+  <%= link_to "Add a comment", new_post_comment_path(@post) %>
+<% end %>
