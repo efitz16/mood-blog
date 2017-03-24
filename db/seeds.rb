@@ -19,3 +19,19 @@ end
 100.times do
   Comment.create(body: Faker::Hipster.paragraphs(rand(1..4)), user: User.all.sample, post: Post.all.sample)
 end
+
+#test cases
+testcase1 = Post.create(title: "Created by user 1", body: "This post created by first user", user: @user1)
+
+testcase2 = Post.create(title: "Created by user 2", body: "This post created by second user", user: @user2)
+
+30.times do
+  Comment.create(body: Faker::Hipster.paragraphs(rand(1..4)), user: [@user1, @user2].sample, post: [testcase1, testcase2].sample)
+end
+
+Comment.create(body: "comment by user 1", user: @user1, post: testcase2)
+
+Comment.create(body: "comment by user 2", user: @user2, post: testcase1)
+
+Comment.create(body: "comment by user 3", user: @user3, post: testcase2)
+
