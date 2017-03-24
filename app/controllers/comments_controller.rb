@@ -51,8 +51,8 @@ class CommentsController < ApplicationController
 
     redirect
 
-    if @comment.update
-       redirect_to current_user.posts
+    if @comment.update(comment_params)
+       redirect_to post_comments_path(@comment.post)
     else
       render 'edit'
     end
@@ -65,7 +65,7 @@ class CommentsController < ApplicationController
 
     @comment.destroy
 
-    redirect_to root_url
+    redirect_to post_comments_path(@comment.post)
   end
 
   private
