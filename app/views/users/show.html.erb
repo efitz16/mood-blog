@@ -2,6 +2,7 @@
   <h3><%= @user.username %></h3>
 
   <%= link_to "See my posts", user_posts_path(@user) %>
+  <%= link_to "Edit my profile", edit_user_path(@user) %>
 <% else %>
   Please log in!
 <% end %>
