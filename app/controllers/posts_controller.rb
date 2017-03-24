@@ -12,6 +12,9 @@ class PostsController < ApplicationController
 
   def new
   	@post = Post.new
+
+    @title = @post.title
+    @body = @post.body
   end
 
   def create
@@ -32,6 +35,9 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
 
     redirect
+
+    @title = @post.title
+    @body = @post.body
   end
 
   def update
