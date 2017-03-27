@@ -1,4 +1,5 @@
-<div>
+<div class="one-post">
+<div id="show-post">
     <h2><%= @post.title %></h2>
     <p><%= @post.body %></p>
     <p><%= @post.created_at.strftime("%m/%d/%Y") %></p>
@@ -6,5 +7,6 @@
       <%= link_to "Edit", edit_post_path(@post) %>
       <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this post" } %>
     <% end %>
-    <%= link_to "see comments", post_comments_path(post_id: @post.id) %>
+    <%= link_to "see comments", post_comments_path(post_id: @post.id), id: "show-post-page-comment-link" %>
+ </div>
  </div>
