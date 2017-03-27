@@ -13,7 +13,7 @@
     <%= form_for([@post, @comment]) do |f| %>
       <%= f.label :body, "Body" %>
       <%= f.text_area :body, value: !!@body ? @body : "" %>
-      <%= f.submit yield(:submit_text), :disable_with => 'Submiting...' %>
+      <%= f.submit "Submit", :disable_with => 'Submiting...' %>
     <% end %>
   </div>
 </div>
