@@ -1,7 +1,10 @@
+<div class="comments-container">
+<div id="all-comments-container">
 <% if !@comments.empty? %>
   <% @comments.each do |comment| %>
-  <div>
+  <div classs="comment-body">
     <p><%= comment.body %></p>
+    <p><%= comment.user.username %></p>
     <% if edit?(comment) %>
       <span><%= link_to "Edit", edit_comment_path(comment) %></span>
     <% end %>
@@ -11,7 +14,11 @@
   </div>
   <% end %>
 <% end %>
+</div>
 
 <% if logged_in? %>
-  <%= link_to "Add a comment", new_post_comment_path(@post) %>
+  <%= link_to "Add a comment", new_post_comment_path(@post), id: "add-comment-link" %>
 <% end %>
+</div>
+<div class="comment-form-container-ajax">
+</div>

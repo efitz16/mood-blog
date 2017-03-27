@@ -4,6 +4,12 @@ class CommentsController < ApplicationController
   def index
     @post = Post.find_by(id: params[:post_id])
     @comments = @post.comments
+
+    if request.xhr?
+      render 'index', layout: false
+    else
+      render 'index'
+    end
   end
 
   def show
@@ -13,6 +19,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @post = Post.find_by(id: params[:post_id])
     @body = @comment.body
+
+    if request.xhr?
+      render '_form', layout: false
+    else
+      render 'new'
+    end
   end
 
   def create
@@ -25,10 +37,18 @@ class CommentsController < ApplicationController
     @post.comments << @comment
 
     if @comment.save
-      redirect_to @comment.post
+      if request.xhr?
+        render '_comment', layout: false
+      else
+        redirect_to @comment.post
+      end
     else
       @errors = @comment.errors
-      render 'new'
+      if request.xhr?
+        render 'new', layout: false
+      else
+        render 'new'
+      end
     end
   end
 
